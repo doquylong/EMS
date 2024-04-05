@@ -1,0 +1,1545 @@
+{
+	"info": {
+		"_postman_id": "69d3d3e2-42e1-4a3e-9661-df88fd2d08b4",
+		"name": "Test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9596789"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();",
+									"if (res.code == 200){",
+									"    pm.globals.set('token', res.data.token);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"student@example.com\",\n    \"password\":\"1234\"\n    // \"email\":\"student2@example.com\",\n    // \"password\":\"1234\"\n    // \"email\":\"teacher@example.com\",\n    // \"password\":\"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"student@example.com\",\n    \"password\":\"1234\"\n    // \"email\":\"student2@example.com\",\n    // \"password\":\"1234\"\n    // \"email\":\"teacher@example.com\",\n    // \"password\":\"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:05:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": {\n        \"id\": 2,\n        \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdHVkZW50QGV4YW1wbGUuY29tIiwiaWF0IjoxNzEyMzA3OTQ0LCJleHAiOjE3MTIzMjU5NDR9.wyed06_nnb4iisK6vU73Qz7y310aD0DeSGkB6D1yxCQG2uMLd5ovcU3vrs6lUq4dSy4kNxfyN6odwgNVRSl3OQ\",\n        \"email\": \"student@example.com\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Student3\",\n    \"email\":\"student3@example.com\",\n    \"password\":\"1234\",\n    \"role\":0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Student3\",\n    \"email\":\"student3@example.com\",\n    \"password\":\"1234\",\n    \"role\":0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:28:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": 4\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/user/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/user/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"user",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:29:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Student 1\",\n        \"email\": \"student@example.com\",\n        \"role\": \"STUDENT\",\n        \"createdAt\": \"2024-04-01T14:03:44.905+00:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:29:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Teacher 1\",\n            \"email\": \"teacher@example.com\",\n            \"role\": \"TEACHER\",\n            \"createdAt\": \"2024-04-01T08:49:18.056+00:00\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Student 1\",\n            \"email\": \"student@example.com\",\n            \"role\": \"STUDENT\",\n            \"createdAt\": \"2024-04-01T14:03:44.905+00:00\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Student 2\",\n            \"email\": \"student2@example.com\",\n            \"role\": \"STUDENT\",\n            \"createdAt\": \"2024-04-01T14:41:33.707+00:00\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Student3\",\n            \"email\": \"student3@example.com\",\n            \"role\": \"TEACHER\",\n            \"createdAt\": \"2024-04-05T09:28:45.077+00:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:29:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Teacher 1\",\n        \"email\": \"teacher@example.com\",\n        \"role\": \"TEACHER\",\n        \"createdAt\": \"2024-04-01T08:49:18.056+00:00\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get my exam list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/me/exam",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"me",
+								"exam"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/me/exam",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"me",
+										"exam"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 08:06:28 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": [\n        {\n            \"performedBy\": \"Student 2\",\n            \"level\": 5,\n            \"title\": \"Hibernate\",\n            \"score\": 5,\n            \"status\": \"FINISHED\",\n            \"startedAt\": \"2024-04-05T15:05:28\",\n            \"finishedAt\": \"2024-04-05T16:35:28\",\n            \"actualFinishedAt\": \"2024-04-05T15:06:16\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all exam",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/exam",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"exam"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/exam",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"exam"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:30:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": [\n        {\n            \"performedBy\": \"Student 2\",\n            \"level\": 5,\n            \"title\": \"Hibernate\",\n            \"score\": 5,\n            \"status\": \"FINISHED\",\n            \"startedAt\": \"2024-04-05T16:03:20\",\n            \"finishedAt\": \"2024-04-05T17:33:20\",\n            \"actualFinishedAt\": \"2024-04-05T16:04:39\"\n        },\n        {\n            \"performedBy\": \"Student 1\",\n            \"level\": 5,\n            \"title\": \"MySQL\",\n            \"score\": 8,\n            \"status\": \"FINISHED\",\n            \"startedAt\": \"2024-04-05T16:05:52\",\n            \"finishedAt\": \"2024-04-05T17:35:52\",\n            \"actualFinishedAt\": \"2024-04-05T16:08:31\"\n        },\n        {\n            \"performedBy\": \"Student 1\",\n            \"level\": 5,\n            \"title\": \"Hibernate\",\n            \"score\": 7.5,\n            \"status\": \"FINISHED\",\n            \"startedAt\": \"2024-04-05T16:09:53\",\n            \"finishedAt\": \"2024-04-05T17:39:53\",\n            \"actualFinishedAt\": \"2024-04-05T16:11:25\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"item": [
+				{
+					"name": "Create test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"AWS\",\n    \"level\": 5,\n    \"time\": 90 //minute\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/test",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"test"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"AWS\",\n    \"level\": 5,\n    \"time\": 90 //minute\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/test",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"test"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:30:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": 6\n}"
+						}
+					]
+				},
+				{
+					"name": "Get list test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/test",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"test"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/test",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"test"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:31:04 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Java core\",\n            \"level\": 3,\n            \"time\": 90,\n            \"active\": true\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Hibernate\",\n            \"level\": 5,\n            \"time\": 90,\n            \"active\": true\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Spring framework\",\n            \"level\": 5,\n            \"time\": 90,\n            \"active\": true\n        },\n        {\n            \"id\": 5,\n            \"title\": \"MySQL\",\n            \"level\": 5,\n            \"time\": 90,\n            \"active\": true\n        },\n        {\n            \"id\": 6,\n            \"title\": \"AWS\",\n            \"level\": 5,\n            \"time\": 90,\n            \"active\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add question to test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"level\":1,\n    \"content\":\"What is SQL?\",\n    \"answers\":[\n        {\n            \"content\":\"A\",\n            \"correct\": false\n        },\n        {\n            \"content\":\"B\",\n            \"correct\": true\n        },\n        {\n            \"content\":\"C\",\n            \"correct\": false\n        },\n        {\n            \"content\":\"D\",\n            \"correct\": false\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/test/5/question",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"test",
+								"5",
+								"question"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"level\":1,\n    \"content\":\"What is SQL?\",\n    \"answers\":[\n        {\n            \"content\":\"A\",\n            \"correct\": false\n        },\n        {\n            \"content\":\"B\",\n            \"correct\": true\n        },\n        {\n            \"content\":\"C\",\n            \"correct\": false\n        },\n        {\n            \"content\":\"D\",\n            \"correct\": false\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/test/5/question",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"test",
+										"5",
+										"question"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 04:22:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Active the test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/test/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"test",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get detail test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/test/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"test",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/test/3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"test",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 08:53:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": [\n        {\n            \"id\": 11,\n            \"content\": \"What is hibernate?\",\n            \"answers\": [\n                {\n                    \"id\": 25,\n                    \"content\": \"A\"\n                },\n                {\n                    \"id\": 26,\n                    \"content\": \"B\"\n                },\n                {\n                    \"id\": 27,\n                    \"content\": \"C\"\n                },\n                {\n                    \"id\": 28,\n                    \"content\": \"D\"\n                }\n            ]\n        },\n        {\n            \"id\": 12,\n            \"content\": \"How many cache level in hibernate?\",\n            \"answers\": [\n                {\n                    \"id\": 29,\n                    \"content\": \"A\"\n                },\n                {\n                    \"id\": 30,\n                    \"content\": \"B\"\n                },\n                {\n                    \"id\": 31,\n                    \"content\": \"C\"\n                },\n                {\n                    \"id\": 32,\n                    \"content\": \"D\"\n                }\n            ]\n        },\n        {\n            \"id\": 13,\n            \"content\": \"What is hibernate?\",\n            \"answers\": [\n                {\n                    \"id\": 33,\n                    \"content\": \"A\"\n                },\n                {\n                    \"id\": 34,\n                    \"content\": \"B\"\n                },\n                {\n                    \"id\": 35,\n                    \"content\": \"C\"\n                },\n                {\n                    \"id\": 36,\n                    \"content\": \"D\"\n                }\n            ]\n        },\n        {\n            \"id\": 14,\n            \"content\": \"What is @Entity?\",\n            \"answers\": [\n                {\n                    \"id\": 37,\n                    \"content\": \"A\"\n                },\n                {\n                    \"id\": 38,\n                    \"content\": \"B\"\n                },\n                {\n                    \"id\": 39,\n                    \"content\": \"C\"\n                },\n                {\n                    \"id\": 40,\n                    \"content\": \"D\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Start exam",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "3",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/exam",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"exam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit exam",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"questionId\":11,\n        \"selectedId\":28\n    },\n    {\n        \"questionId\":12,\n        \"selectedId\":30\n    },\n    {\n        \"questionId\":13,\n        \"selectedId\":12\n    },\n    {\n        \"questionId\":14,\n        \"selectedId\":37\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{ver}}/exam/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{ver}}",
+								"exam",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"questionId\":11,\n        \"selectedId\":28\n    },\n    {\n        \"questionId\":12,\n        \"selectedId\":30\n    },\n    {\n        \"questionId\":13,\n        \"selectedId\":12\n    },\n    {\n        \"questionId\":14,\n        \"selectedId\":37\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{ver}}/exam/6",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{ver}}",
+										"exam",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 09:11:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"Ok\",\n    \"data\": 7.5\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "ver",
+			"value": "v1",
+			"type": "string"
+		}
+	]
+}

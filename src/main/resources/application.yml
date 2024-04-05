@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    hikari:
+      maximum-pool-size: 2
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost/quiz
+    username: root
+    password: Aa123456@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+app:
+  jwt:
+    secret-key: emsemsemsemsemsems
+    time-to-live: 18000000 #ms
